@@ -11,7 +11,7 @@ from celery import Celery
 from raven.contrib.flask import Sentry
 from pyfcm import FCMNotification
 from project.api.common.base_definitions import BaseFlask
-from project.extensions import db, migrate, bcrypt, mail
+from project.extensions import db, migrate, bcrypt, mail, cache
 from project.models.employees import Employee
 from project.models.departments import Department
 from project.models.dept_emp import DeptEmp
@@ -61,6 +61,7 @@ def setup_extensions(app):
     bcrypt.init_app(app)
     migrate.init_app(app, db)
     mail.init_app(app)
+    cache.init_app(app,config={'CACHE_TYPE': 'RedisCache'})
 
 # noinspection PyPropertyAccess
 def make_celery(app):

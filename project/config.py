@@ -25,6 +25,9 @@ class BaseConfig:
     TOKEN_EMAIL_EXPIRATION_SECONDS = 0
     SENTRY_DSN = 'Sentry_DNS'
     FCM_SERVER_KEY = os.environ.get('FCM_SERVER_KEY')
+    CACHE_REDIS_HOST="localhost"
+    CACHE_REDIS_PORT=6379
+    CACHE_REDIS_URL='redis://localhost:6379'
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration"""
