@@ -8,6 +8,7 @@ The data I used from https://github.com/datacharmer/test_db
 - [Commands](#comparision)
 ## Optimize API performance
 - [x] Redis cache
+- [x] Create Index
 - [x] Use last_id to paginate instead of OFFSET and LIMIT
 - [ ] Nginx and Gunicorn
 ## Comparision
