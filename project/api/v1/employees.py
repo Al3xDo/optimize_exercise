@@ -1,6 +1,8 @@
 # project/api/v1/users.py
 
 from ast import arg
+from asyncio.log import logger
+from time import time
 from flask import Blueprint, request
 from flask_sqlalchemy import Pagination
 from project.models.employees import Employee
@@ -38,6 +40,7 @@ def get_employees_lib_paginate():
                    per_page=employees_query.per_page)
     return result
 @employees_blueprint.route('/employee/raw', methods=['GET'])
+@cache.cached(timeout=50)
 def get_employees_raw_paginate():
     args = request.args.to_dict()
     per_page= int(args.get('per_page'))
