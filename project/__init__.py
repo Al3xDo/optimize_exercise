@@ -19,7 +19,7 @@ from project.models.dept_manager import DeptManager
 from project.models.salary import Salary
 from project.models.title import Title
 from .config import config_by_name
-
+import redis
 
 # flask config
 # conf = Config(root_path=os.path.dirname(os.path.realpath(__file__)))
@@ -79,4 +79,5 @@ def make_celery(app):
     return celery
 
 app = create_app()
-# celery = make_celery(app)
+# redis_cache= redis.StrictRedis()
+celery = make_celery(app)

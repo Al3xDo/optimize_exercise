@@ -3,3 +3,4 @@ env
 htmlcov
 flask-base.log
 experiment.md
+test_db/

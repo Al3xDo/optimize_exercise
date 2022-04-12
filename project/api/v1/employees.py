@@ -10,19 +10,8 @@ from project import cache
 
 employees_blueprint = Blueprint('employees', __name__)
 
-@employees_blueprint.route('/employee/<emp_id>', methods=['GET'])
-def get_employee_by_id(emp_id: int):
-    creator = Employee.get(emp_id)
-    return {
-        "emp_no" : creator.emp_no,
-        "birth_date" : creator.birth_date,
-        "first_name" : creator.first_name,
-        "last_name" : creator.last_name,
-        "gender" : creator.gender,
-        "hire_date" : creator.hire_date
-    }
 @employees_blueprint.route('/employee/lib', methods=['GET'])
-@cache.cached(timeout=50)
+@cache.cached(timeout=50,query_string=True)
 def get_employees_lib_paginate():
     args = request.args.to_dict()
     page= int(args.get('page'))
@@ -40,7 +29,7 @@ def get_employees_lib_paginate():
                    per_page=employees_query.per_page)
     return result
 @employees_blueprint.route('/employee/raw', methods=['GET'])
-@cache.cached(timeout=50)
+@cache.cached(timeout=50,query_string=True)
 def get_employees_raw_paginate():
     args = request.args.to_dict()
     per_page= int(args.get('per_page'))

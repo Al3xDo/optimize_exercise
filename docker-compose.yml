@@ -20,8 +20,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_USER: ${DB_NAME}
-      MYSQL_DATABASE: 'fast_check_prod'
-      # MYSQL_HOST: '0.0.0.0'
+      MYSQL_DATABASE: 'employees'
+      MYSQL_HOST: 'mysql5_7'
     ports:
       - "32000:3306"
   flask-base-service:
